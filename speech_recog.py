@@ -7,12 +7,11 @@ def speech_to_text_from_file(file_path):
     with sr.AudioFile(file_path) as source:
         # Adjust for ambient noise if necessary
         recognizer.adjust_for_ambient_noise(source)
-        print("Processing audio file...")
         audio = recognizer.record(source)
 
     try:
         text = recognizer.recognize_google(audio, language="es-ES")
-        print(f"Text: {text}")
+        print(f"{text}")
 
     except sr.UnknownValueError:
         print("Google Web Speech API could not understand audio")
